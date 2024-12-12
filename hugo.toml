@@ -1,0 +1,64 @@
+# Basic config
+baseURL = "https://petermiller310.github.io/"
+theme = "hugo-simple"
+languageCode = "en-US"
+title = "Peter Miller"
+enableRobotsTXT = true
+capitalizeListTitles = true
+
+# Taxonomy settings
+[taxonomies]
+tag = "tags"
+
+[permalinks]
+blog = "/:slugorfilename/"
+tags = "/blog/:slug"
+
+# Markup settings
+[markup.goldmark.renderer]
+unsafe = true
+
+[markup.tableOfContents]
+startLevel = 2
+endLevel = 3
+
+[markup.highlight]
+lineNos = true
+lineNumbersInTable = false
+noClasses = true
+style = "catppuccin-mocha"
+
+# Parameters
+[params]
+title = "Peter Miller"
+description = "Personal blog"
+dateFormat = "2006-01-02"
+hideMadeWithLine = true
+hideRSSLink = true
+github = "petermiller310"
+
+# Author information
+[params.author]
+name = "Peter Miller"
+email = ""
+
+# Navigation menu
+[[menu.main]]
+name = "Home"
+pageRef = "/"
+weight = 10
+
+[[menu.main]]
+name = "Blog"
+pageRef = "/posts"
+weight = 20
+
+# Pagination
+[pagination]
+pagerSize = 16
+
+# Output formats
+[outputs]
+section = ["html"]
+taxonomy = ["html"]
+term = ["html"]
