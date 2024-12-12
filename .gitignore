@@ -8,9 +8,6 @@ hugo_stats.json
 # Temporary lock files
 .hugo_build.lock
 
-# Themes
-themes/
-
 # Generated files by hugo
 /public/
 /resources/
