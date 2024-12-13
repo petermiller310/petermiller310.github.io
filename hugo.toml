@@ -36,6 +36,7 @@ dateFormat = "2006-01-02"
 hideMadeWithLine = true
 hideRSSLink = true
 github = "petermiller310"
+favicon = "images/favicon.png"
 
 # Author information
 [params.author]
