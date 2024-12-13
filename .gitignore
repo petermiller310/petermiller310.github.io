@@ -9,8 +9,8 @@ hugo_stats.json
 .hugo_build.lock
 
 # Generated files by hugo
-/public/
-/resources/
+public/
+resources/
 
 # macOS system files
 .DS_Store
