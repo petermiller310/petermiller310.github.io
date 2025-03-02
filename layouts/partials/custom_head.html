@@ -1,0 +1,9 @@
+{{ $variables := resources.Get "variables.css" | minify }}
+<link href="{{ $variables.RelPermalink }}" rel="stylesheet" />
+{{ $custom := resources.Get "custom.css" | minify }}
+<link href="{{ $custom.RelPermalink }}" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+{{ $menu := resources.Get "menu.js" | minify }}
+<script src="{{ $menu.RelPermalink }}"></script>

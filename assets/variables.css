@@ -1,0 +1,10 @@
+/* Add RGB versions of accent colors for transparency */
+:root {
+  --accent-rgb: 13, 71, 161; /* RGB for #0d47a1 */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent-rgb: 255, 179, 0; /* RGB for #ffb300 */
+  }
+}

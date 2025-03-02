@@ -1,7 +1,7 @@
 ---
-title: "Peter Miller"
+title: "peter's blog"
 ---
 
 ![monkey see](/images/monkey.jpg)
 
-Hello. Welcome to my blog! 
+hello. welcome to my blog!

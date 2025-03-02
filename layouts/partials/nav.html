@@ -1,0 +1,14 @@
+<div class="site-name">peter's blog</div>
+<div class="hamburger-menu">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+<ul class="nav-links">
+  {{ $currentPage := . -}}
+  {{ range .Site.Menus.main.ByWeight }}
+  <li>
+    <a href="{{ .URL }}" {{ if eq $currentPage .Page }}class="current" {{ end }}>{{ lower .Name }}</a>
+  </li>
+  {{ end }}
+</ul>

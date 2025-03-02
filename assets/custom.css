@@ -1,0 +1,287 @@
+/* Custom styles to make the navbar more elegant */
+
+/* Set Inter as the main font - the GOAT of typography */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.95rem; /* Reduced font size */
+  line-height: 1.5; /* Reduced line height */
+  letter-spacing: -0.011em;
+  font-feature-settings: 'ss01' 1, 'ss02' 1, 'cv01' 1, 'cv03' 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Adjust the header padding to be more compact and balanced */
+body > header {
+  padding: 0.35rem 0 0.55rem 0; /* Reduced vertical padding */
+  border-bottom: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Create a container for the navbar that matches the body width */
+body > header > nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: min(45rem, 90%);
+  margin: 0 auto;
+  padding: 0;
+  height: 2.2rem; /* Reduced height */
+  position: relative;
+}
+
+/* Style for the site name */
+.site-name {
+  font-weight: 700;
+  font-size: 1.25rem; /* Reduced font size */
+  color: var(--text);
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+/* Style the navigation links */
+header > nav a,
+header > nav a:visited {
+  margin: 0 0 0 1.25rem; /* Reduced margin */
+  border: none;
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.9rem; /* Reduced font size */
+  padding: 0.4rem 0; /* Reduced padding */
+  position: relative;
+  transition: color 0.2s ease;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.015em;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Add an underline effect on hover and for current page */
+header > nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--accent);
+  transition: width 0.3s ease;
+}
+
+header > nav a:hover::after,
+header > nav a.current::after {
+  width: 100%;
+}
+
+header > nav a:hover,
+header > nav a.current {
+  color: var(--accent);
+  border: none;
+}
+
+/* Position the navigation menu to the right */
+header > nav .nav-links {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  align-items: center;
+  height: 100%;
+}
+
+header > nav .nav-links li {
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+}
+
+/* Hamburger menu styles */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.hamburger-menu span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: var(--text);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.hamburger-menu.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Mobile styles */
+@media only screen and (max-width: 720px) {
+  body > header > nav {
+    padding: 0 0.5rem;
+  }
+  
+  .hamburger-menu {
+    display: flex;
+  }
+  
+  /* Bootstrap-style dropdown */
+  header > nav .nav-links {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: auto;
+    min-width: 10rem;
+    height: auto;
+    background-color: var(--bg);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: none;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  
+  header > nav .nav-links.active {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  header > nav .nav-links li {
+    margin: 0;
+    width: 100%;
+    height: auto;
+  }
+  
+  header > nav a,
+  header > nav a:visited {
+    margin: 0;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem; /* Reduced font size */
+    width: 100%;
+    display: block;
+    text-align: left;
+  }
+  
+  /* Remove the underline effect on mobile */
+  header > nav a::after {
+    display: none;
+  }
+  
+  header > nav a:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  header > nav a.current {
+    background-color: rgba(var(--accent-rgb), 0.1);
+    color: var(--accent);
+  }
+}
+
+/* Adjust heading sizes to be more proportional */
+h1 {
+  font-size: 2rem; /* Reduced font size */
+  margin-top: 1.8rem; /* Reduced margin */
+  margin-bottom: 1.2rem; /* Reduced margin */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 700;
+  line-height: 1.2; /* Reduced line height */
+  letter-spacing: -0.022em;
+}
+
+h2 {
+  font-size: 1.6rem; /* Reduced font size */
+  margin-top: 1.7rem; /* Reduced margin */
+  margin-bottom: 0.9rem; /* Reduced margin */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  line-height: 1.25; /* Reduced line height */
+  letter-spacing: -0.021em;
+}
+
+h3 {
+  font-size: 1.3rem; /* Reduced font size */
+  margin-top: 1.3rem; /* Reduced margin */
+  margin-bottom: 0.7rem; /* Reduced margin */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  line-height: 1.25; /* Reduced line height */
+  letter-spacing: -0.02em;
+}
+
+/* Adjust paragraph spacing for better readability */
+p {
+  margin-bottom: 1em; /* Reduced margin */
+}
+
+/* Adjust blog post list styling */
+ul.blog-posts {
+  padding-left: 0;
+}
+
+ul.blog-posts > li {
+  margin-bottom: 0.9rem; /* Reduced margin */
+  display: flex;
+  align-items: baseline;
+}
+
+ul.blog-posts > li > span {
+  display: inline-block;
+  width: 6.5rem;
+  text-align: right;
+  margin-right: 1rem;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem; /* Reduced font size */
+}
+
+ul.blog-posts > li a {
+  font-size: 1.1rem; /* Reduced font size */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.015em;
+  font-weight: 500;
+}
+
+/* Adjust content spacing */
+main {
+  padding: 1rem 0; /* Reduced padding */
+}
+
+article {
+  margin-bottom: 2rem; /* Reduced margin */
+}
+
+/* Remove horizontal line from footer */
+body > footer {
+  border-top: none;
+  padding: 1rem 0; /* Reduced padding */
+  font-size: 0.9rem; /* Reduced font size */
+}
+
+/* Remove horizontal line from content area */
+content hr, main hr {
+  display: none;
+}

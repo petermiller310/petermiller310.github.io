@@ -2,9 +2,9 @@
 baseURL = "https://petermiller310.github.io/"
 theme = "hugo-simple"
 languageCode = "en-US"
-title = "Peter Miller"
+title = "peter's blog"
 enableRobotsTXT = true
-capitalizeListTitles = true
+capitalizeListTitles = false
 
 # Taxonomy settings
 [taxonomies]
@@ -30,8 +30,8 @@ style = "catppuccin-mocha"
 
 # Parameters
 [params]
-title = "Peter Miller"
-description = "Personal blog"
+title = "peter's blog"
+description = "personal blog"
 dateFormat = "2006-01-02"
 hideMadeWithLine = true
 hideRSSLink = true
@@ -40,17 +40,17 @@ favicon = "images/favicon.png"
 
 # Author information
 [params.author]
-name = "Peter Miller"
+name = "peter's blog"
 email = ""
 
 # Navigation menu
 [[menu.main]]
-name = "Home"
+name = "home"
 pageRef = "/"
 weight = 10
 
 [[menu.main]]
-name = "Blog"
+name = "blog"
 pageRef = "/posts"
 weight = 20
 
@@ -60,6 +60,7 @@ pagerSize = 16
 
 # Output formats
 [outputs]
+home = ["html"]
 section = ["html"]
 taxonomy = ["html"]
 term = ["html"]
