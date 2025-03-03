@@ -36,6 +36,6 @@ so yeah, maybe the traditional "how-to" blog post is dead. maybe the "10 tips fo
 
 or maybe not.
 
-after all, the irony isn't lost on me that LLMs are now good enough to generate synthetic posts that perfectly mimic this exact type of "authentic human perspective" i'm describing. they can fabricate personal anecdotes, inject just the right amount of self-doubt, and even throw in those little idiosyncrasies that make writing feel genuine.
+after all, the irony isn't lost on me that llms are now good enough to generate synthetic posts that perfectly mimic this exact type of "authentic human perspective" i'm describing. they can fabricate personal anecdotes, inject just the right amount of self-doubt, and even throw in those little idiosyncrasies that make writing feel genuine.
 
 hell, for all you know, an AI wrote this entire post.
