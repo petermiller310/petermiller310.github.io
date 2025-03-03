@@ -1,20 +1,18 @@
 +++
 date = "2025-03-02T12:10:36-08:00"
 draft = true
-title = "agentic workflows with browser use: building an ai-powered apartment search tool"
+title = "agentic workflows with langgraph and browser-use: building an ai-powered apartment search tool"
 +++
 
-# agentic workflows with browser use: building an ai-powered apartment search tool
+# agentic workflows with langgraph and browser use: building an ai-powered apartment search tool
 
 the rapid advancement of multimodal models with powerful vision capabilities has opened exciting new possibilities for ai applications, particularly in the realm of autonomous web agents. with openai's operator and deep research showcasing what's possible, there's growing industry momentum toward building agentic systems that can perceive, reason about, and interact with web interfaces. in this project, i implemented a simple web agent that navigates craigslist housing listings using `browser-use` for web navigation, `langgraph` for workflow/prompt orchestration, and `fasthtml`/`monsterui` for the frontend. this combination of technologies enables an end-to-end solution that accepts natural language queries, autonomously searches apartment listings, and presents structured results—showcasing how these emerging tools can be combined to create powerful applications with minimal development effort.
 
-## demo
-
 *[video: the entire flow end to end]* 
 
-## WebVoyager: a vision-enabled web-browsing agent
+## webvoyager: a vision-enabled web-browsing agent
 
-[WebVoyager](https://arxiv.org/abs/2401.13919), introduced in early 2024, marked a significant advancement in autonomous web agents by integrating several key techniques:
+[webvoyager](https://arxiv.org/abs/2401.13919) marked a significant advancement in autonomous web agents by integrating several key techniques:
 
 1. **visual perception of web elements**: using screenshots to understand page layout and content
 2. **set-of-marks annotations**: highlighting interactive elements with bounding boxes
@@ -63,7 +61,7 @@ this approach allows the agent to "see" the page as a human would, identifying b
 
 ### action space and reasoning
 
-`browser-use` implements a specific action space for web navigation:
+`browser-use` implements a "computer-use" action space for web navigation:
 
 1. **click**: interacting with buttons, links, and other clickable elements
 2. **type**: entering text into form fields
@@ -108,10 +106,6 @@ this approach forces the model to return data in a consistent format, making dow
 
 `langgraph`'s state management capabilities complement `browser-use`'s ReAct pattern perfectly. while browser-use handles the reasoning-action loop for web navigation, `langgraph` orchestrates the overall workflow, managing transitions between different states and ensuring that the agent follows a coherent process from start to finish.
 
-### workflow orchestration with langgraph
-
-the system is structured as a directed graph with distinct nodes for each step in the process:
-
 *[diagram: placeholder for workflow graph]*
 
 this graph-based approach provides several advantages:
@@ -121,25 +115,35 @@ this graph-based approach provides several advantages:
 3. **error handling and recovery**: the system can retry specific nodes or take alternative paths
 4. **maintainability**: components can be tested and updated independently
 
-### the agency-orchestration tradeoff
+### the agency-orchestration spectrum
 
-one of the most important lessons from this project was understanding the tradeoff between full agency and structured orchestration:
+my journey with this project revealed a critical insight: there's a spectrum between full agency and structured orchestration, with different tradeoffs at each point:
 
-- **full agency approach**: letting a powerful model like `gpt-4o` handle the entire task autonomously
-  - *pros*: simpler implementation, potentially more flexible
-  - *cons*: expensive, less reliable, harder to debug
+in my initial experiments, i let `gpt-4o` autonomously navigate craigslist and handle all search filters. watching it interact with dropdown menus and input fields was impressive, but this approach had clear drawbacks:
+- it was prohibitively expensive (those tokens add up quickly!)
+- it occasionally made mistakes when encountering unexpected UI elements
+- debugging failures required reviewing lengthy traces of interactions
 
-- **structured orchestration approach**: breaking the task into smaller steps with explicit transitions
-  - *pros*: more reliable, easier to debug, can use cheaper models
-  - *cons*: requires more engineering, less flexible
+by shifting toward a more structured approach with `langgraph`, i broke the process into discrete steps with explicit transitions. this allowed me to:
+- use `gpt-4o-mini` throughout the workflow, significantly reducing costs
+- create more reliable and predictable behavior
+- easily identify and fix issues at specific steps in the process
 
-in my initial experiments, i tried using `gpt-4o` to autonomously navigate craigslist  and fill out all search filters. while it worked impressively well, it was prohibitively expensive and also occasionally made mistakes. 
+the most valuable insight wasn't that one approach is superior, but rather understanding when to apply each strategy. full agency excels at handling novel, complex tasks where flexibility matters most. structured orchestration shines when reliability, cost, and maintainability are priorities.
 
-by switching to a more structured approach with `langgraph`, i found that `gpt-4o-mini` provided the best balance of capability and cost. using this single model throughout the entire process, combined with a well-designed workflow, delivered reliable results at a fraction of the cost.
+### evaluating model capabilities for specific tasks
+
+model evaluation is critical when designing these workflows—it's not just about which model is "smartest" but which performs best on your specific tasks. my evaluations showed that while `gpt-4o` excelled at complex UI navigation, `gpt-4o-mini` was perfectly capable of handling the structured components of my search workflow.
+
+the right evaluation framework depends on what you're optimizing for: accuracy, cost-efficiency, speed, or reliability. for my apartment search tool, i found that measuring successful completion of specific sub-tasks (like correctly parsing search requirements or building valid query parameters) provided better insights than end-to-end testing alone.
+
+this task-specific evaluation approach helped me identify where i could use simpler models without sacrificing quality, ultimately creating a more efficient system that delivered reliable results at a fraction of the cost.
 
 ## resources
 
 - [browser-use github repository](https://github.com/browser-use/browser-use)
 - [langgraph documentation](dhttps://langchain-ai.github.io/langgraph/)
+= [anthropic agents blog post](https://www.anthropic.com/research/building-effective-agents)
 - [webvoyager paper](https://arxiv.org/abs/2401.13919)
 - [react paper](https://arxiv.org/abs/2210.03629)
+
