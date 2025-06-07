@@ -37,6 +37,7 @@ hideMadeWithLine = true
 hideRSSLink = true
 github = "petermiller310"
 favicon = "images/favicon.png"
+googleAnalytics = "G-BK9WTK2F9H"
 
 # Author information
 [params.author]
